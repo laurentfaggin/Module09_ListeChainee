@@ -28,3 +28,13 @@ ListeChainee::ListeChainee(const ListeChainee& p_listeACopier):
 	}
 }
 
+ListeChainee::ListeChainee(ListeChainee&& p_listeADeplacer) :
+	m_debut(p_listeADeplacer.m_debut),
+	m_fin(p_listeADeplacer.m_fin),
+	m_nombreElement(p_listeADeplacer.m_nombreElement) 
+{
+	p_listeADeplacer.m_debut = nullptr;
+	p_listeADeplacer.m_fin = nullptr;
+	p_listeADeplacer.m_nombreElement = 0;
+}
+
