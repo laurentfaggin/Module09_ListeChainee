@@ -38,3 +38,14 @@ ListeChainee::ListeChainee(ListeChainee&& p_listeADeplacer) :
 	p_listeADeplacer.m_nombreElement = 0;
 }
 
+ListeChainee::~ListeChainee() {
+	node* noeudCourant = this->m_debut;
+	while (noeudCourant != nullptr) {
+		node* noeud = noeudCourant;
+		noeudCourant = noeudCourant->m_suivant;
+		delete noeud;
+	}
+	this->m_debut = nullptr;
+	this->m_fin = nullptr;
+	this->m_nombreElement = 0;
+}
