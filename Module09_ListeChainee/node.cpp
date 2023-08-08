@@ -23,12 +23,12 @@ Node::~Node() {
 	}
 }
 
-int Node::obtenirValeur() {
-	return this->m_donnee;
+int Node::obtenirDonnee() const {
+	return m_donnee;
 }
 
-int Node::obtenir() const {
-	return m_donnee;
+void Node::modifierDonnees(int p_donnee) {
+	this->m_donnee = p_donnee;
 }
 
 void Node::modifierSuivant(Node* p_nouveauSuivant) {

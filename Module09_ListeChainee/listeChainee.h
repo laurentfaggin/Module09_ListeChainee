@@ -11,6 +11,7 @@ public:
 	void ajouterDebut(const int& p_valeur);
 	void ajouterFin(const int& p_valeur);
 	Node* nodePrecedent(const int& p_indice);
+	Node* nodeCourant(const int& p_indice);
 	void inserer(const int& p_valeur, const int& p_indice);
 	void supprimerDebut();
 	void supprimerFin();
@@ -26,7 +27,7 @@ public:
 	void trier(bool (*p_fonctionTri)(const int&, const int&));
 
 private:
-	int m_nombreElement;
+	int m_nombreMaillons;
 	Node* m_debut;
 	Node* m_fin;
 };
