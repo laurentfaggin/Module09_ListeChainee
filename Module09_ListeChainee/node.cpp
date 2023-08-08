@@ -1,28 +1,36 @@
 #include "node.h"
 
 
-node::node() {
+Node::Node() {
 	m_donnee = 0;
 	m_suivant = nullptr;
 }
 
-node::node(int p_donnee) {
+Node::Node(int p_donnee) {
 	m_donnee = p_donnee;
 	m_suivant = nullptr;
 }
 
-node::node(int p_donnee, node* p_suivant) {
+Node::Node(int p_donnee, Node* p_suivant) {
 	m_donnee = p_donnee;
 	m_suivant = p_suivant;
 }
 
-node::~node() {
+Node::~Node() {
 	if (this->m_suivant != nullptr) {
 		delete this->m_suivant;
 		this->m_suivant = nullptr;
 	}
 }
 
-int node::obtenir() const {
+int Node::obtenirValeur() {
+	return this->m_donnee;
+}
+
+int Node::obtenir() const {
 	return m_donnee;
+}
+
+void Node::modifierSuivant(Node* p_nouveauSuivant) {
+	m_suivant = p_nouveauSuivant;
 }

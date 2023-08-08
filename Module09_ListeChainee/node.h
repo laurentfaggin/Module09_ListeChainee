@@ -1,13 +1,15 @@
 #pragma once
 
-class node {
+class Node {
 public:
-	node();
-	node(int p_donnee);
-	node(int p_donnee, node* p_suivant);
-	~node();
+	Node();
+	Node(int p_donnee);
+	Node(int p_donnee, Node* p_suivant);
+	~Node();
 	int obtenir() const;
-	node* m_suivant;
+	void modifierSuivant(Node* p_nouveausuivant);
+	int obtenirValeur();
+	Node* m_suivant;
 private:
 	int m_donnee;
 };

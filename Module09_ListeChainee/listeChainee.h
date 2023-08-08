@@ -10,6 +10,7 @@ public:
 
 	void ajouterDebut(const int& p_valeur);
 	void ajouterFin(const int& p_valeur);
+	Node* nodePrecedent(const int& p_indice);
 	void inserer(const int& p_valeur, const int& p_indice);
 	void supprimerDebut();
 	void supprimerFin();
@@ -26,6 +27,6 @@ public:
 
 private:
 	int m_nombreElement;
-	node* m_debut;
-	node* m_fin;
+	Node* m_debut;
+	Node* m_fin;
 };

@@ -1,4 +1,6 @@
+#include<stdexcept>
 #include "listeChainee.h"
+
 
 ListeChainee::ListeChainee():
 	m_debut (nullptr),
@@ -12,9 +14,9 @@ ListeChainee::ListeChainee(const ListeChainee& p_listeACopier):
 	m_fin(nullptr),
 	m_nombreElement(0)
 {
-	node* noeudListeACopier = p_listeACopier.m_debut;
+	Node* noeudListeACopier = p_listeACopier.m_debut;
 	while (noeudListeACopier != nullptr) {
-		node* noeudCopie = new node(noeudListeACopier->obtenir());
+		Node* noeudCopie = new Node(noeudListeACopier->obtenir());
 		if (m_fin == nullptr) {
 			m_debut = m_fin = noeudCopie;
 		}
@@ -39,9 +41,9 @@ ListeChainee::ListeChainee(ListeChainee&& p_listeADeplacer) :
 }
 
 ListeChainee::~ListeChainee() {
-	node* noeudCourant = this->m_debut;
+	Node* noeudCourant = this->m_debut;
 	while (noeudCourant != nullptr) {
-		node* noeud = noeudCourant;
+		Node* noeud = noeudCourant;
 		noeudCourant = noeudCourant->m_suivant;
 		delete noeud;
 	}
@@ -51,6 +53,39 @@ ListeChainee::~ListeChainee() {
 }
 
 void ListeChainee::ajouterDebut(const int& p_valeur) {	
-	node noeudDebut(p_valeur, this->m_debut);
-	this->m_debut = &noeudDebut;
+	Node* noeudDebut = new Node(p_valeur,this->m_debut);
+	this->m_debut = noeudDebut;
+	if (this->m_nombreElement == 0) {
+		this->m_fin = noeudDebut;
+	}
+	++this->m_nombreElement;
+}
+
+Node* ListeChainee::nodePrecedent(const int& p_indice) {
+	Node* noeudPrecedent = this->m_debut;
+	int compteur = 0;
+	if (p_indice > 0) {
+		compteur = p_indice - 1;		
+	}
+	while(compteur){
+		noeudPrecedent = noeudPrecedent->m_suivant;
+		--compteur;
+	} 
+	return noeudPrecedent;
+}
+
+void ListeChainee::inserer(const int& p_valeur, const int& p_indice) {
+	Node* newNode = new Node(p_valeur);
+	if (p_indice > this->m_nombreElement) {
+		std::invalid_argument("valeur d'indice trop elevee");
+	}
+	else if (this->m_nombreElement != 0) {
+		Node* futurNoeudPrecedent = this->nodePrecedent(p_indice);
+		newNode->modifierSuivant(futurNoeudPrecedent->m_suivant);
+		futurNoeudPrecedent->modifierSuivant(newNode);
+	}
+	else {
+		this->ajouterDebut(newNode->obtenirValeur());
+	}
+
 }
