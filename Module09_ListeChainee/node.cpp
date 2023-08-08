@@ -1,5 +1,11 @@
 #include "node.h"
 
+
+node::node() {
+	m_donnee = 0;
+	m_suivant = nullptr;
+}
+
 node::node(int p_donnee) {
 	m_donnee = p_donnee;
 	m_suivant = nullptr;

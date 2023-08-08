@@ -49,3 +49,8 @@ ListeChainee::~ListeChainee() {
 	this->m_fin = nullptr;
 	this->m_nombreElement = 0;
 }
+
+void ListeChainee::ajouterDebut(const int& p_valeur) {	
+	node noeudDebut(p_valeur, this->m_debut);
+	this->m_debut = &noeudDebut;
+}

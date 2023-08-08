@@ -2,6 +2,7 @@
 
 class node {
 public:
+	node();
 	node(int p_donnee);
 	node(int p_donnee, node* p_suivant);
 	~node();
