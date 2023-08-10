@@ -176,8 +176,13 @@ public:
 	}
 
 	void vider() {
-		while (this->m_nombreMaillons > 0) {
-			this->supprimerDebut();
+		if (this->m_nombreMaillons > 0) {
+			while (this->m_nombreMaillons != 0) {
+				this->supprimerDebut();
+			}
+		}
+		else {
+			return 0;
 		}
 	}
 
