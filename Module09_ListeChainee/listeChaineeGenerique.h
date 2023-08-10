@@ -216,7 +216,7 @@ public:
 		else {
 			Node<TypeElement>* noeudCourant = this->m_debut;
 			while (noeudCourant != nullptr) {
-				p_fonction(noeudCourant->obtenirDonnee());
+				p_fonction(noeudCourant->obtenirDonnees());
 				noeudCourant = noeudCourant->m_suivant;
 			}
 		}
@@ -231,9 +231,9 @@ public:
 			while (noeudCourant != nullptr) {
 				Node<TypeElement>* noeudSuivant = noeudCourant->m_suivant;
 				while (noeudSuivant != nullptr) {
-					if (!p_fonctionTri(noeudCourant->obtenirDonnee(), noeudSuivant->obtenirDonnee())) {
+					if (!p_fonctionTri(noeudCourant->obtenirDonnees(), noeudSuivant->obtenirDonnee())) {
 						int temp = noeudCourant->obtenirDonnee();
-						noeudCourant->modifierDonnees(noeudSuivant->obtenirDonnee());
+						noeudCourant->modifierDonnees(noeudSuivant->obtenirDonnees());
 						noeudSuivant->modifierDonnees(temp);
 					}
 					noeudSuivant = noeudSuivant->m_suivant;
