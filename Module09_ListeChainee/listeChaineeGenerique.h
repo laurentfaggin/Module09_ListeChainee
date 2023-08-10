@@ -227,7 +227,7 @@ public:
 		}
 	}
 
-	void trier(bool(*p_fonctionTri)(const int&, const int&)) {
+	void trier(bool(*p_fonctionTri)(const TypeElement&, const TypeElement&)) {
 		if (this->m_nombreMaillons == 0) {
 			std::invalid_argument("la liste est vide");
 		}
